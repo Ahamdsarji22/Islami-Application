@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:islami_app/modules/Quraan/quraanWidget.dart';
 import 'package:islami_app/widgets/hadethWidget.dart';
-import 'package:islami_app/widgets/quraanWidget.dart';
 import 'package:islami_app/widgets/radioWidget.dart';
 import 'package:islami_app/widgets/settingWidget.dart';
 import 'package:islami_app/widgets/tasbehWidget.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'HomeScreen';
+
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -33,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         child: Scaffold(
             appBar: AppBar(
-              title: Text('اسلامي'),
+              title: const Text('إسلامي'),
             ),
             body: selected[selectedIndex],
             bottomNavigationBar: BottomNavigationBar(
@@ -42,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 setState(() {});
               },
               currentIndex: selectedIndex,
-              items: [
+              items: const [
                 BottomNavigationBarItem(
                     icon: ImageIcon(AssetImage('assets/images/quran_icon.png')),
                     label: 'Quran'),
@@ -60,6 +62,5 @@ class _HomeScreenState extends State<HomeScreen> {
                     icon: Icon(Icons.settings), label: 'Setting'),
               ],
             )));
-    ;
   }
 }
