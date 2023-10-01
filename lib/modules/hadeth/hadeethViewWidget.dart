@@ -1,29 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:islami_app/modules/Quraan/quraanWidget.dart';
+import 'package:islami_app/widgets/hadethWidget.dart';
 
-class QuranTextView extends StatefulWidget {
-  QuranTextView({super.key});
-
-  static const String routeName = 'SuraText';
-
-  @override
-  State<QuranTextView> createState() => _QuranTextViewState();
-}
-
-class _QuranTextViewState extends State<QuranTextView> {
-  String surahContent = '';
-  List<String> allContent = [];
+class hadeethView extends StatelessWidget {
+  static const String routeName = 'hadeethView';
 
   @override
   Widget build(BuildContext context) {
-    var args = ModalRoute.of(context)?.settings.arguments as SuraDetails;
-    if (surahContent.isEmpty) {
-      loadFiles(args.suraNumber);
-    }
+    var args = ModalRoute.of(context)?.settings.arguments as HadeethContent;
     var theme = Theme.of(context);
     var mediaQuery = MediaQuery.of(context).size;
-
     return Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -50,14 +35,9 @@ class _QuranTextViewState extends State<QuranTextView> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      args.suraName,
+                      args.title,
                       style: theme.textTheme.bodyLarge,
                     ),
-                    SizedBox(width: 20),
-                    Icon(
-                      Icons.play_circle,
-                      size: 30,
-                    )
                   ],
                 ),
                 Divider(
@@ -69,32 +49,17 @@ class _QuranTextViewState extends State<QuranTextView> {
                 ),
                 Expanded(
                   child: ListView.builder(
-                    itemBuilder: (
-                      BuildContext context,
-                      int index,
-                    ) {
-                      return Text('(${index + 1})${allContent[index]}',
-                          style: theme.textTheme.bodySmall,
-                          textAlign: TextAlign.center);
-                    },
-                    itemCount: allContent.length,
+                    itemBuilder: (context, index) => Text(
+                      args.content,
+                      textAlign: TextAlign.center,
+                      style: theme.textTheme.bodyMedium,
+                    ),
+                    itemCount: 1,
                   ),
-                )
+                ),
               ],
             ),
           ),
         ));
-  }
-
-  loadFiles(String index) async {
-    String surah = await rootBundle.loadString("assets/files/$index.txt");
-    surahContent = surah;
-    List<String> Lines = surahContent.split('\n');
-    Lines.removeAt(Lines.length - 1);
-    print(Lines);
-
-    setState(() {
-      allContent = Lines;
-    });
   }
 }
