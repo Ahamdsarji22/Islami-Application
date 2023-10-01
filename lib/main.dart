@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:islami_app/HomeScreen.dart';
 import 'package:islami_app/core/theme/myThemeData.dart';
 import 'package:islami_app/modules/Quraan/quranTextView.dart';
+import 'package:islami_app/modules/hadeth/hadeethViewWidget.dart';
 import 'package:islami_app/splashScreen.dart';
 
 void main() {
@@ -20,7 +21,8 @@ class MyApplication extends StatelessWidget {
         routes: {
           HomeScreen.routeName: (context) => HomeScreen(),
           splashScreen.routeName: (context) => const splashScreen(),
-          QuranTextView.routeName: (context) => QuranTextView()
+          QuranTextView.routeName: (context) => QuranTextView(),
+          hadeethView.routeName: (context) => hadeethView()
         });
   }
 }
