@@ -21,7 +21,7 @@ class QuranViewWidget extends StatelessWidget {
         Container(
           height: 45,
           width: 1.5,
-          color: theme.primaryColor,
+          color: theme.colorScheme.onSecondary,
         ),
         Expanded(
             child: Text(SuraName,

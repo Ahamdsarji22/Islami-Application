@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_app/modules/hadeth/hadeethViewWidget.dart';
 
 class hadethWidget extends StatefulWidget {
@@ -17,7 +18,7 @@ class _hadethWidgetState extends State<hadethWidget> {
     return Column(children: [
       Image.asset('assets/images/ahadeth_image.png'),
       Divider(
-        color: Theme.of(context).primaryColor,
+        color: theme.dividerTheme.color,
         thickness: 3,
         indent: 10.0,
         endIndent: 10.0,
@@ -26,7 +27,7 @@ class _hadethWidgetState extends State<hadethWidget> {
         children: [
           Expanded(
             child: Text(
-              'الأحاديث',
+              AppLocalizations.of(context)!.hadiths,
               style: theme.textTheme.bodyMedium,
               textAlign: TextAlign.center,
             ),
@@ -34,7 +35,7 @@ class _hadethWidgetState extends State<hadethWidget> {
         ],
       ),
       Divider(
-        color: Theme.of(context).primaryColor,
+        color: theme.dividerTheme.color,
         thickness: 3,
         indent: 10.0,
         endIndent: 10.0,
@@ -56,7 +57,7 @@ class _hadethWidgetState extends State<hadethWidget> {
           ),
           itemCount: AllHadeethContent.length,
           separatorBuilder: (context, index) => Divider(
-            color: Theme.of(context).primaryColor,
+            color: theme.dividerTheme.color,
             thickness: 2,
             indent: 120.0,
             endIndent: 120.0,

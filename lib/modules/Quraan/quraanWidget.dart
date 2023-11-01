@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_app/modules/Quraan/quranTextView.dart';
 import 'package:islami_app/modules/Quraan/quranViewWidget.dart';
 
 class quranWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var local = AppLocalizations.of(context)!;
+
     var theme = Theme.of(context);
     List<String> SuraNames = [
       "الفاتحه",
@@ -128,15 +131,15 @@ class quranWidget extends StatelessWidget {
 
         // Text('quran', style: TextStyle(fontSize: 30)),
         Divider(
-          color: Theme.of(context).primaryColor,
-          thickness: 2,
+          color: theme.dividerTheme.color,
+          thickness: 1.5,
           height: 3,
         ),
         Row(
           children: [
             Expanded(
               child: Text(
-                'رقم السورة',
+                local.suraNum,
                 style: theme.textTheme.bodyMedium,
                 textAlign: TextAlign.center,
               ),
@@ -144,17 +147,17 @@ class quranWidget extends StatelessWidget {
             Container(
               height: 45,
               width: 1.5,
-              color: theme.primaryColor,
+              color: theme.colorScheme.onSecondary,
             ),
             Expanded(
-                child: Text('اسم السورة',
+                child: Text(local.suraName,
                     style: theme.textTheme.bodyMedium,
                     textAlign: TextAlign.center)),
           ],
         ),
         Divider(
-          color: Theme.of(context).primaryColor,
-          thickness: 2,
+          color: theme.dividerTheme.color,
+          thickness: 1.5,
           height: 3,
         ),
         Expanded(
